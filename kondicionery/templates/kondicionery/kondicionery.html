@@ -1,0 +1,298 @@
+{% extends "main/base.html" %} {% load static %} 
+
+{% block title %}
+<title>{{title}}</title>
+{% endblock title %}
+
+{% block css %} 
+<link rel="stylesheet" href="{% static "css/units.5.css" %}"> 
+<link rel="stylesheet"href="{% static "css/units-tile.5.css" %}"> 
+<link rel="stylesheet" href="{% static "css/cunits.5.css" %}"> 
+{% endblock css %} 
+{%block workarea %}
+<div id="units" class="workarea">
+  <div id="units-content">
+    <div id="units-toolbar">
+      <div style="float: left">
+        <h1 itemprop="headline">Кондиционирование</h1>
+        <div
+          id="navbar-path"
+          itemscope=""
+          itemtype="http://schema.org/BreadcrumbList"
+        >
+          <span
+            itemprop="itemListElement"
+            itemscope=""
+            itemtype="http://schema.org/ListItem"
+            ><a class="breadcrumbs" itemprop="item" href="/"
+              ><span itemprop="name">Главная</span></a
+            ><meta itemprop="position" content="1" /></span
+          ><span class="breadcrumbs_sep"></span
+          ><span
+            itemprop="itemListElement"
+            itemscope=""
+            itemtype="http://schema.org/ListItem"
+            ><a class="breadcrumbs" itemprop="item" href="/kondicionery"
+              ><span itemprop="name">Кондиционеры</span></a
+            ><meta itemprop="position" content="2"
+          /></span>
+        </div>
+      </div>
+      <div style="float: right">
+        <!-- units-toolbar.html begin -->
+        <div
+          class="unit-list-button"
+          id="units-filter-hide"
+          title="Скрыть панель фильтров"
+          style="display: inline-block"
+        >
+          Скрыть фильтры
+        </div>
+        <div
+          class="unit-list-button"
+          id="units-filter-show"
+          title="Показать панель фильтров"
+          style="display: none"
+        >
+          Показать фильтры
+        </div>
+        <div
+          id="units-toolbar-sort-menu"
+          class="unit-list-popup-opt"
+          style="display: none"
+        >
+          <!--div data-value="rd">Без сортировки</div-->
+          <div data-value="ma">Сортировка: по производителю</div>
+          <div data-value="pa">Сортировка: по цене - сначала недорогие</div>
+          <div data-value="pd">Сортировка: по цене - сначала дорогие</div>
+          <!-- div data-value="dd">Сортировка: по новизне</div -->
+          <!-- div data-value="sd">Сортировка: по популярности</div -->
+        </div>
+        <div
+          id="units-toolbar-psize-menu"
+          class="unit-list-popup-opt"
+          style="display: none"
+        >
+          <div data-value="10">Показывать по 10</div>
+          <div data-value="15">Показывать по 15</div>
+          <div data-value="30">Показывать по 30</div>
+          <div data-value="50">Показывать по 50</div>
+          <div data-value="999999">Показывать все</div>
+        </div>
+        <div
+          class="unit-list-popup"
+          data-value="15"
+          data-list="units-toolbar-psize-menu"
+          id="units-toolbar-psize"
+        >
+          Показывать по 15
+        </div>
+        <div
+          class="unit-list-popup"
+          data-value="rd"
+          data-list="units-toolbar-sort-menu"
+          id="units-toolbar-sort"
+        >
+          Сортировать по
+        </div>
+        <a
+          class="unit-list-button unit-list-button-off"
+          id="units-toolbar-show-table"
+          style="font-size: 18pt"
+          title="Подробная форма"
+          href="?f=table"
+          ><span class="typcn typcn-th-list-outline"></span
+        ></a>
+        <a
+          class="unit-list-button"
+          id="units-toolbar-show-tile"
+          style="font-size: 18pt"
+          title="Краткая форма"
+          href="?f=tile"
+          ><span class="typcn typcn-th-small-outline"></span
+        ></a>
+        <a
+          class="unit-list-button"
+          id="units-toolbar-refresh"
+          style="font-size: 18pt"
+          title="Обновить"
+          href=""
+          ><span class="typcn typcn-arrow-sync"></span
+        ></a>
+        <!-- units-toolbar.html end -->
+      </div>
+      <div class="clr"></div>
+    </div>
+    <table id="cunits">
+      <tbody>
+        <tr>
+          <td id="cunits-filter">
+            {% include "blocks/cunits_filter.html" %}
+          </td>
+          <td id="_cunits-list">
+            {% include "blocks/cunits_recipe.html" %}
+              {% include "blocks/cunits_items.html" %}
+              <div id="pages-index">
+                <a class="pg_refs-prev-off" rel="nofollow" href="?p=1"></a
+                ><a
+                  class="pg_refs-item pg_refs-item-current"
+                  rel="nofollow"
+                  href="?p=1"
+                  >1</a
+                ><a class="pg_refs-item" rel="nofollow" href="?p=2">2</a
+                ><a class="pg_refs-item" rel="nofollow" href="?p=3">3</a
+                ><a class="pg_refs-item" rel="nofollow" href="?p=4">4</a
+                ><a class="pg_refs-item" rel="nofollow" href="?p=5">5</a
+                ><span class="pg_refs-skip"></span
+                ><a class="pg_refs-item" rel="nofollow" href="?p=52">52</a
+                ><a class="pg_refs-next" rel="nofollow" href="?p=2"></a>
+              </div>
+              <div id="pg-more">
+                <div id="pg-more-get">Показать еще</div>
+              </div>
+            </div>
+            <div id="page-desc">
+              <h2>Кондиционеры в Санкт-Петербурге</h2>
+              <p>
+                Современные кондиционеры по назначению делятся на бытовые,
+                полупромышленные, промышленные, прецизионные и т. д. По типу
+                исполнения на сплит-системы, мультисплит-системы, моноблоки (без
+                наружного блока). Сплит-системы делятся на настенные, кассетные,
+                канальные и напольно-потолочные. Моноблоки бывают настенные,
+                мобильные и оконные. На российском рынке климатической техники в
+                разных регионах популярны различные бренды. Например, в
+                центральной России популярны Ballu и Haier, в Петербурге же
+                повышенным спросом пользуется Lessar. В Сочи самая популярная
+                марка Midea, в СПб она не особо известна. У такого распределения
+                есть причина - крупные компании осуществляют гарантийное
+                обслуживание своей продукции недалёко от мест её реализации, и
+                чем ближе завод, тем активнее продвижение брендов в приближенных
+                к нему регионах. В частности, производство ряда моделей Lessar и
+                их гарантийное обслуживание находится под Петербургом, что
+                существенно снижает транспортные расходы, позволяет держать
+                повышенный ассортимент и низкие цены на продукцию производителя.
+                Но выбор всё-таки огромен: на рынке Санкт-Петербурга представлен
+                полный ассортимент ведущих мировых брендов климатического
+                оборудования. В нижнем ценовом сегменте это кондиционеры Lessar,
+                Kentatsu, Haier, Ballu, Electrolux, Hisense. В среднем ценовом
+                сегменте доминирует Fujitsu. В высшем расположились: Mitsubishi
+                Electric, Daikin, Gree.
+              </p>
+              <h2>Какой кондиционер выбрать?</h2>
+              <p>
+                На что обратить внимание при выборе кондиционера? Первое, с чем
+                надо определиться, это
+                <a href="https://profclimatspb.ru/info?id=1010"
+                  >тип внутреннего блока</a
+                >
+                . Второе - мощность кондиционера, её можно рассчитать по формуле
+                либо воспользовавшись
+                <a href="/podbor/kondicionery/">калькулятором подбора</a> на
+                нашем сайте. Третье, на что нужно обратить внимание при покупке
+                климатической техники, это функционал. Для начала стоит
+                определиться с тем, нужен ли Вам
+                <a href="/kondicionery/inverter">инверторный кондиционер</a>,
+                или же с постоянной производительностью (также известный как
+                on/off). Далее нужно определиться с ценовой категорией, это
+                сразу ограничит количество брендов. Следующим шагом при выборе
+                кондиционера может быть выбор дизайна - будущая покупка должна
+                просто радовать глаз. И, наконец, желательно ознакомиться с
+                отзывами о выбранной модели.
+              </p>
+              <h3>Цены на кондиционеры</h3>
+              <p>
+                В каждой ценовой категории есть лидеры рынка - как правило,
+                заслуженно. Кроме того, если у вас есть особые требования к
+                функционалу (например, Wi-Fi-модуль) или к дизайну (красный
+                цвет/зеркальная поверхность передней панели), это сразу
+                ограничит выбор и повысит цену. Если же никаких экзотических
+                требований нет, и Вы просто хотите купить надёжный кондиционер
+                по низкой цене, то имейте в виду, что подавляющее большинство
+                аппаратов нижнего ценового сегмента сделано в Китае. Типична
+                ситуация, когда покупатель выбирает из двух брендов, один
+                «неизвестный китаец», а другой «популярный европейский бренд», а
+                по факту выбирает из двух моделей, сделанных на одном заводе.
+              </p>
+              <h3>Как купить кондиционер на нашем сайте</h3>
+              <p>
+                На сайте интернет-магазин «ПрофКлимат СПб» мы постарались
+                сделать выбор и покупку кондиционера максимально удобной для
+                наших потенциальных покупателей. Вам достаточно нажать вкладку
+                подбор (в верхней части сайта), выбрать подбор бытовых
+                кондиционеров. Выбрать предпочтительных производителей,
+                ограничить максимальную цену. Далее в параметрах помещения
+                указать площадь, высоту потолка и степень освещённости
+                помещения. Сайт сам подберёт товар подходящей мощности. Далее
+                посетитель сайта может выбрать тип внутреннего блока,
+                инверторный (да/нет), режим работы (охлаждение/охлаждение и
+                обогрев). Также, для удобства пользователя наш сайт сам может
+                отфильтровать воздушные тепловые насосы, максимально удобные для
+                обогрева загородного дома. Фильтр дизайнерские кондиционеры,
+                отберёт товары с необычным дизайном, нестандартных цветов,
+                необычной формы, для детской комнаты. Фильтр "для серверной"
+                подберёт модели с предустановленным зимним комплектом.
+              </p>
+            </div>
+            <div id="cunits-footer">
+              <p>
+                Интернет-магазин «ПрофКлимат СПб» осуществляет продажу,
+                установку, ремонт и сервисное обслуживание современных
+                кондиционеров воздуха для квартир, офисов, магазинов. Ищете, где
+                в Питере дешево купить лучший современный кондиционер? Сколько
+                стоит? На официальном сайте компании вы можете найти каталог,
+                стоимость (прайс) и отзывы.
+              </p>
+              <p>
+                Компания «ПрофКлимат СПб» предлагает вам широкий выбор
+                современного качественного и сертифицированного оборудования
+                систем кондиционирования, вентиляции, обогревателей от ведущих
+                мировых производителей. Исходя из пожеланий клиентов и
+                современных направлений рынка, ассортимент нашей компании
+                постоянно пополняется. Мы являемся не просто интернет-магазином,
+                но также осуществляем полный комплекс работ по проектированию,
+                установке, ремонту и сервисному обслуживанию оборудования.
+                Благодаря большому объему опыта и знаний квалифицированные
+                специалисты нашей компании выполняют свою работу быстро и
+                качественно.
+              </p>
+              <p>Наши преимущества:</p>
+              <ul>
+                <li>
+                  Компания «ПрофКлимат СПб» является официальным дилером ведущих
+                  мировых брэндов.
+                </li>
+                <li>
+                  У нас вы можете купить оборудование по честной цене, с
+                  качественной установкой и увеличенной гарантией.
+                </li>
+                <li>
+                  Быстрое оформление заказа, гибкая ценовая политика, скидки на
+                  монтаж.
+                </li>
+              </ul>
+            </div>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+{% endblock workarea %}
+{% block scripts %}
+<script src="{% static "/js/libs/jquery/jquery.js" %}"></script>
+<script src="{% static "/js/libs/jqueryui/jquery-ui.js" %}"></script>
+<script src="{% static "/js/libs/date.format.js" %}"></script>
+<script src="{% static "/js/libs/jstorage.js" %}"></script>
+<script src="{% static "/js/libs/jquery.url.js" %}"></script>
+<script src="{% static "/js/nCONSOLE.js" %}"></script>
+<script src="{% static "/js/extlib.js" %}"></script>
+<script src="{% static "/js/nCFG.js" %}"></script>
+<script src="{% static "/js/nSITE.js" %}"></script>
+<script src="{% static "/js/nCOMMON.js" %}"></script>
+<script src="{% static "/js/nAJAX.js" %}"></script>
+<script src="{% static "/js/nPOPUPMENU.2.js" %}"></script>
+<script src="{% static "/js/nFIND.js" %}"></script>
+<script src="{% static "/js/nHEADER.js" %}"></script>
+<script src="{% static "/js/nUSER.1.js" %}"></script>
+<script src="{% static "/js/nConditioners.3.js" %}"></script>
+{% endblock  %}
